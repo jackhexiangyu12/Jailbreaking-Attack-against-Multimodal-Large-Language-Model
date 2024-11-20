@@ -417,7 +417,8 @@ torch.manual_seed(random_number)
 train_num = 25
 attack_mode = 'PGD'
 attack_power = 64
-attack_iters = 200
+# attack_iters = 200
+attack_iters = 50
 round = 'A'
 model = MiniGPT(train_num)
 model = model.eval()
@@ -498,6 +499,7 @@ for p in range(model.train_num):
     print(output_text)  # output_token.cpu().numpy()
     out_csv.append(output_text)
     #print('-------------------------Finishing response Goal:' + str(model.train_goal_index[p] + 1) + '----------------------------------------')
+
 with open('rst_v2_mprompt_' + str(model.train_num) + '_Train_goal_output_' +attack_mode+'_'+str(attack_power)+'_'+str(attack_iters)+'_'+round+ '.csv', 'w', encoding='utf-8',
           newline='') as f:
     write = csv.writer(f)
